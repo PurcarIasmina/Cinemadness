@@ -6,7 +6,7 @@ const Header = props => {
     return <Fragment>
         <header className={classes.header}>
             <h1>Logo</h1>
-            <h1>Searcb</h1>
+            <h1>SearchBar</h1>
             <button>LogIn</button>
             <button>SignUp</button>
         </header>
