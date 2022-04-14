@@ -8,7 +8,7 @@ const Header = props => {
         <header className={classes.header}>
             <img className={classes.logo} src={logo} alt=""></img>
             <input className={classes['header-search']} type="text" placeholder="Search"/>
-            <select>
+            <select className={classes['days']}>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
                 <option value="Wednesday">Wednesday</option>
@@ -17,8 +17,8 @@ const Header = props => {
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </select>
-            <button>LogIn</button>
-            <button>SignUp</button>
+            <button className={classes['login-signup-buttons']}>Log In</button>
+            <button className={classes['login-signup-buttons']}>Sign Up</button>
         </header>
         <div className={classes['main-image']}>
            <img src={backgroundImage} alt=""></img> 

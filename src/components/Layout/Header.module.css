@@ -27,6 +27,29 @@
       outline: none;
   }
 
+  .days{
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 10px 10px;
+    border: 1px solid #d1d1d1;
+    outline: none;
+    text-align: center;
+}
+
+  .login-signup-buttons{
+    width: 8rem;
+    height: 2.5rem;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: red;
+    color: white;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-radius: 10px 10px;
+}
+
   .main-image {
     width: 100%;
     height: 100%;
