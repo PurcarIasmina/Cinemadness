@@ -3,17 +3,30 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 5rem;
+    height: 7rem;
     background-color: #8a2b06;
     color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 10%;
+    padding: 0 5%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
     z-index: 10;
   }
-  
+  .logo{
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .header-search{
+      width: 30rem;
+      height: 2rem;
+      padding: 10px;
+      border-radius: 10px 10px;
+      border: 1px solid #d1d1d1;
+      outline: none;
+  }
+
   .main-image {
     width: 100%;
     height: 100%;
