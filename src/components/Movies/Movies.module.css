@@ -1,0 +1,7 @@
+.movie-container{
+    position: absolute;
+    top: 30%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 5%;
+}
