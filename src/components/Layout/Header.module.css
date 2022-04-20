@@ -1,0 +1,64 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 7rem;
+    background-color: #8a2b06;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 10;
+  }
+  .logo{
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .header-search{
+      width: 30rem;
+      height: 2rem;
+      padding: 10px;
+      border-radius: 10px 10px;
+      border: 1px solid #d1d1d1;
+      outline: none;
+  }
+
+  .days{
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 10px 10px;
+    border: 1px solid #d1d1d1;
+    outline: none;
+    text-align: center;
+}
+
+  .login-signup-buttons{
+    width: 8rem;
+    height: 2.5rem;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: red;
+    color: white;
+    text-transform: capitalize;
+    font-size: 15px;
+    border-radius: 10px 10px;
+}
+
+  .main-image {
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .main-image img {
+    width: 110%;
+    height: 100%;
+    object-fit: cover;
+  }
