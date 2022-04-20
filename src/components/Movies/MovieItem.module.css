@@ -1,0 +1,23 @@
+.movie{
+    background-color: #C4C4C4;
+    border-radius: 6px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 1rem;
+    width: 240px;
+}
+
+.movie img{
+    max-width: 100%;
+}
+
+.movie-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.movie-info h3{
+    margin: 0;
+}
