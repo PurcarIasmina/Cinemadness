@@ -8,7 +8,7 @@ function App() {
     
       <Router>
         <Routes>
-        <Route path="/" element={<Header/>}/>
+        <Route path="" element={<Header/>}/>
         <Route path="/register" element={<Register/>}/>
         </Routes>
       </Router>

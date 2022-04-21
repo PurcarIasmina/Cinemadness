@@ -62,3 +62,9 @@
     height: 100%;
     object-fit: cover;
   }
+  a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  
