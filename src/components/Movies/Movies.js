@@ -38,6 +38,12 @@ const DUMMY_MOVIES = [
         name: "Ted",
         rating: 7, 
     },
+    {
+        id: "movie5",
+        image: ted,
+        name: "Ted",
+        rating: 7, 
+    },
 ];
 
 const Movies = () =>{
