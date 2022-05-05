@@ -20,7 +20,7 @@ const Header = props => {
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </select>
-            <button className={classes['login-signup-buttons']}>Log In</button>
+            <button className={classes['login-signup-buttons']}><a href="/login">Log In</a></button>
             <button className={classes['login-signup-buttons']}><a href="/register">Sign Up</a></button>
         </header>
         <div className={classes['main-image']}>
