@@ -1,17 +1,22 @@
 import React from "react";
 import classes from './Register.module.css';
-import {StyledContainer,StyledTextInput,Avatar,StyledFormArea} from './Style';
+import {StyledContainer,StyledTextInput,Avatar,StyledFormArea,StyledTitle,StyledSubTitle,StyledButton} from './Style';
 import logo from '../../assets/logo.png';
 import { Formik ,Form} from "formik";
-import { TextInput } from "./FormLib";
+import { TextInput} from "./FormLib";
+
+
 function Register()
 {
     return(
         <div>
         <StyledContainer>
-        <StyledFormArea>
-        <Avatar image={logo}/>
           
+        <StyledFormArea>
+            <div>
+        <img className={classes.logo} src={logo} align="left" alt=""></img>
+     <StyledTitle size={30} color={'red'}>Register in </StyledTitle>
+        </div>
        <Formik>
             {() =>
             (
@@ -30,7 +35,10 @@ function Register()
             }
        
             </Formik>
-        
+            <StyledButton to="/register">Create</StyledButton>
+        <StyledSubTitle size={15}>Already have an account?</StyledSubTitle>
+        <StyledButton to="/login">Log in</StyledButton>
+
         </StyledFormArea>
         </StyledContainer>
         </div>
