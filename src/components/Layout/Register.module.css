@@ -15,14 +15,37 @@ code{
     font-family: source-code-pro,Menlo,Monaco,Consolas,'Courier New', monospace;
 }
 .logo
-{width:3rem;
-height:3rem;
-border-radius: 50px;
-background-size:cover;
-margin:auto;
-padding:10px;}
+{
+    width:5rem;
+    height:5rem;
+    border-radius: 50px;
+    background-size:cover;
+    margin:auto;
+    padding: 10px;
+}
 
-div{
+.fieldsLogo
+{
+    width:4rem;
+    height:4rem;
+    border-radius: 50px;
+    background-size:cover;
+    margin:auto;
+    padding: 10px;
+}
+
+div
+{
     display: inline;
-    
+}
+
+.imageAndField
+{
+    display: flex;
+    justify-content: center;
+}
+
+.accountQuestion
+{
+    margin: 10px 0px 10px 0px;
 }
