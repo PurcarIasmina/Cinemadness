@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.11.6",
     "@testing-library/react": "^11.2.2",
     "@testing-library/user-event": "^12.5.0",
+    "axios": "^0.27.2",
+    "cors": "^2.8.5",
     "express": "^4.17.3",
     "formik": "^2.2.9",
     "mysql": "^2.18.1",

@@ -4,10 +4,25 @@ import {StyledContainer,StyledTextInput,Avatar,StyledFormArea,StyledTitle,Styled
 import logo from '../../assets/logo.png';
 import { Formik ,Form} from "formik";
 import { TextInput} from "./FormLib";
-
-
+import {useState} from "react";
+import { Axios  } from "axios";
 function Register()
 {
+    const [fname, setFname]=useState("");
+    const [lname, setLname]=useState("");
+    const [email, setEmail]=useState("");
+    const [password,setPassword]=useState("");
+    const [cpassword,setCpassword]=useState("");
+    // const displayInfo=()=> {
+    
+    //     console.log(fname+lname+email+password);
+    // };
+    const addUser=()=>{
+        console.log(fname);
+    Axios.post("http://localhost:3001/create",{fname:fname,lname:lname,email:email,password:password, cpassword:cpassword}).then(()=>{console.log("Ok")});
+    
+
+};
     return(
         <div>
         <StyledContainer>
@@ -21,11 +36,11 @@ function Register()
             {() =>
             (
                 <Form>
-                    <TextInput name="fname" type="text" placeholder="First Name"/>
-                    <TextInput name="lname" type="text" placeholder="Last Name"/>
-                    <TextInput name="email" type="text" placeholder="Email"/>
-                    <TextInput name="password" type="password" placeholder="Password"/>
-                    <TextInput name="cpassword" type="password" placeholder="Confirm Password"/>
+                    <TextInput name="fname" onChange={(event)=> {setFname(event.target.value)}} type="text" placeholder="First Name"/>
+                    <TextInput name="lname"  onChange={(event)=> {setLname(event.target.value)}}type="text" placeholder="Last Name"/>
+                    <TextInput name="email"  onChange={(event)=> {setEmail(event.target.value)}}type="text" placeholder="Email"/>
+                    <TextInput name="password"  onChange={(event)=> {setPassword(event.target.value)}}type="password" placeholder="Password"/>
+                    <TextInput name="cpassword"   onChange={(event)=> {setCpassword(event.target.value)}}type="password" placeholder="Confirm Password"/>
 
 
 
@@ -35,7 +50,7 @@ function Register()
             }
        
             </Formik>
-            <StyledButton to="/register">Create</StyledButton>
+            <StyledButton  to="/register">Create</StyledButton>
         <StyledSubTitle size={15}>Already have an account?</StyledSubTitle>
         <StyledButton to="/login">Log in</StyledButton>
 
