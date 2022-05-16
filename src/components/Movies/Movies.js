@@ -1,5 +1,7 @@
 import classes from './Movies.module.css';
 import MovieItem from './MovieItem';
+import { Link } from 'react-router-dom';
+
 
 import batman from '../../assets/batman.jpg';
 import ted from '../../assets/ted.png';
@@ -50,12 +52,14 @@ const Movies = () =>{
     return (
         <div className={classes['movie-container']}>
             {DUMMY_MOVIES.map( (movie) => 
+            <Link to={"/movie-details/" + movie.name}>
                 <MovieItem 
                 key={movie.id} 
                 image={movie.image} 
                 name={movie.name} 
                 rating={movie.rating}
                 />
+            </Link>
             )}
         </div>
     );
