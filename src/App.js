@@ -1,27 +1,31 @@
 import { Route, Redirect } from 'react-router-dom';
-import { Fragment } from 'react';
+import { Switch } from 'react-router-dom';
 
 import Admin from './components/Users/Admin';
 import UnloggedUser from './components/Users/UnloggedUser';
 import MovieDetails from './components/Movies/MovieDetails';
+import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 
 
 function App() {
   return (
-    <Fragment>
-      <Route path="/" exact>
-        <Redirect to="/unlogged-user"/>
-      </Route>
-      <Route path="/admin">
-        <Admin />
-      </Route>
-      <Route path="/unlogged-user">
-        <UnloggedUser />
-      </Route>
-      <Route path='/movie-details/:movieId'>
-        <MovieDetails />
-      </Route>
-    </Fragment>
+      <Switch>
+        <Route path="/" exact>
+          <Redirect to="/unlogged-user"/>
+        </Route>
+        <Route path="/admin" exact>
+          <Admin />
+        </Route>
+        <Route path="/unlogged-user" exact>
+          <UnloggedUser />
+        </Route>
+        <Route path='/movie-details/:movieId' exact>
+          <MovieDetails />
+        </Route>
+        <Route path='*'>
+          <NotFoundPage />
+        </Route>
+      </Switch>
   );
 }
 
