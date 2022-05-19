@@ -6,8 +6,27 @@ import emailLogo from '../../assets/email.png';
 import passwordLogo from '../../assets/password.png';
 import {Formik ,Form} from "formik";
 import {TextInput} from "./FormLib";
+import {useState} from "react";
+import axios from "axios";
+import { useNavigate } from 'react-router-dom';
+
 function Login()
 {
+    const [email, setEmail]=useState("");
+    const [password,setPassword]=useState("");
+    const navigate=useNavigate();
+    const logUser=()=>{
+        //console.log(fname);
+    axios.post("http://localhost:3003/login",{email:email,password:password},{
+
+        headers: {
+
+            'Content-Type' : 'application/json'
+
+        }
+
+    }).then(console.log("ok"));
+}
     return(
         <div>
         <StyledContainer>
@@ -22,16 +41,16 @@ function Login()
                         <Form style={{marginTop: 30}}>
                             <div className={classes.imageAndField}>
                                 <img className={classes.fieldsLogo} src={emailLogo} align="left" alt=""></img>
-                                <TextInput name="email" type="text" placeholder="Email"/>
+                                <TextInput name="email" onChange={(event)=> {setEmail(event.target.value)}} type="text" placeholder="Email"/>
                             </div>
                             <div className={classes.imageAndField} style={{marginBottom: 25}}>
                                 <img className={classes.fieldsLogo} src={passwordLogo} align="left" alt=""></img>
-                                <TextInput name="password" type="password" placeholder="Password"/>
+                                <TextInput name="password" onChange={(event)=> {setPassword(event.target.value)}} type="password" placeholder="Password"/>
                             </div>
                         </Form>
                     )}
                 </Formik>
-                <StyledButton to="/login">Log in</StyledButton>
+                <StyledButton onClick={(event)=>{logUser()}}>Log in</StyledButton>
                 <StyledSubTitle className={classes.accountQuestion} size={15}>Don't have an account?</StyledSubTitle>
                 <StyledButton to="/register">Register in</StyledButton>
             </StyledFormArea>
