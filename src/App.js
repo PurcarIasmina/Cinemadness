@@ -5,6 +5,7 @@ import Admin from './components/Users/Admin';
 import UnloggedUser from './components/Users/UnloggedUser';
 import MovieDetails from './components/Movies/MovieDetails';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import AddNewMovie from './components/Movies/AddNewMovie';
 
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route path="/admin" exact>
           <Admin />
+        </Route>
+        <Route path="/admin/add-new-movie" exact>
+          <AddNewMovie />
         </Route>
         <Route path="/unlogged-user" exact>
           <UnloggedUser />
