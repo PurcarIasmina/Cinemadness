@@ -1,9 +1,10 @@
-const { Axios } = require("axios");
+const { axios } = require("axios");
 const express= require("express");
 const app = express();
 const mysql=require("mysql");
 const cors=require("cors");
 const bcrypt = require("bcryptjs");
+const { object } = require("yup");
 app.use(cors());
 app.use(express.json());
 
@@ -30,6 +31,7 @@ const lname=req.body.lname;
 const email=req.body.email;
 const password=req.body.password;
 const cpassword=req.body.cpassword;
+if(lname!="" && fname)
 if(password==cpassword){
 try{
     bcrypt.genSalt(10, function(err, salt) {
@@ -44,7 +46,7 @@ try{
                 }
                 else
                 {
-                    console.log("all inserted");
+                    res.status(200).send(req.body);
                 }
             });
         });
@@ -58,30 +60,45 @@ try{
 }
 }
 });
-app.post('/login',(req,res)=>{
+app.post('/verifyaccount',(req,res)=>{
 const email=req.body.email;
 const password=req.body.password;
+console.log(req.body);
 db.query("SELECT * FROM users WHERE email=?",[email],(err,result) =>
             {
                 if(err)
                 {
-                    throw(err);
+                    res.status(500).send(err);
                 }
-                
+                var ok=0;
+                var list=[];
+                list.push(result);
                 if(result.length>0)
-                    {
-                      console.log(result[0].email);
-
-                    if(bcrypt.compare(password,result[0].password)){
-                        //console.log(password);
-                        res.redirect("/loggeduser");
+                 {
+                      console.log(email);
+                    
+                    for(var i=0;i<result.length;i++){
+                        console.log(i);
+                        console.log(result[i].password);
+                            if(bcrypt.compare(password,result[i].password)==true){
+                        console.log(password);
+                        ok=1;
+                        res.status(200).send(result[i]);
+                        
+                    
                     
                     }
-                    else
-                    {
-                        res.redirect("/login");
-                    }
+                    console.log(ok);
+                    
                 }
+                    if(ok==0)
+                    {    console.log("Nu este");
+                         res.status(300).send("Incorrect password");
+                         
+                    }
+                 }
+                else
+                res.status(301).send("This user doesn't exist");
 
                 
             });
@@ -90,7 +107,7 @@ db.query("SELECT * FROM users WHERE email=?",[email],(err,result) =>
 
 });
 
-app.listen(3003,()=>{
+app.listen(3007,()=>{
     console.log("yey");
 });
 

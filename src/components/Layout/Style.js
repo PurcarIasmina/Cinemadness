@@ -94,3 +94,31 @@ margin:20px;
     cursor:pointer;
 }
 `;
+export const StyledButtonWLink=styled.button`
+padding: 10px;
+width: 150px;
+background-color:white;
+opacitiy:0.5;
+border: 3px solid ${colors.primary};
+border-radius: 25px;
+color: green;
+font-style:bold;
+text-decoration:none;
+text-align:center;
+transition: ease-in-out 0.3s;
+margin:20px;
+&:hover
+{
+    background-color: ${colors.primary};
+    color: ${colors.theme};
+    cursor:pointer;
+}
+`;
+export const FieldError = styled.span`
+  color: #b32e2e;
+  font-size: 11px;
+  min-height: 18px;
+  margin:1px;
+  font-weight:900;
+  text-align:center;
+`;
