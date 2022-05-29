@@ -105,30 +105,30 @@ function Register()
 
                                 <div className={classes.imageAndField}>
                                     <img className={classes.fieldsLogo} src={nameLogo} align="left" alt=""></img>
-                                    <TextInput value={formik.values.fname} onBlur={formik.handleBlur} name="fname" onChange={formik.handleChange} type="text" placeholder="First Name"/>
+                                    <TextInput value={formik.values.fname} onBlur={formik.handleBlur} name="fname" onChange={formik.handleChange} type="text" placeholder="First Name" style={{color: "black"}}/>
                                 </div>
                                 <FieldError>{formik.touched.lname && formik.errors.lname ? formik.errors.lname : ""}</FieldError>
                                 <div className={classes.imageAndField}>
                                     <img className={classes.fieldsLogo} src={nameLogo} align="left" alt=""></img>
-                                    <TextInput  value={formik.values.lname} onBlur={formik.handleBlur} name="lname" onChange={formik.handleChange} type="text" placeholder="Last Name"/>
+                                    <TextInput  value={formik.values.lname} onBlur={formik.handleBlur} name="lname" onChange={formik.handleChange} type="text" placeholder="Last Name" style={{color: "black"}}/>
                                 </div>
                                 <FieldError>{formik.touched.email && formik.errors.email ? formik.errors.email : ""}</FieldError>
 
                                 <div className={classes.imageAndField}>
                                     <img className={classes.fieldsLogo} src={emailLogo} align="left" alt=""></img>
-                                    <TextInput name="email"  onBlur={formik.handleBlur} value={formik.values.email} onChange={formik.handleChange} type="text" placeholder="Email"/>
+                                    <TextInput name="email"  onBlur={formik.handleBlur} value={formik.values.email} onChange={formik.handleChange} type="text" placeholder="Email" style={{color: "black"}}/>
                                 </div>
                                 <FieldError>{formik.touched.password && formik.errors.password ? formik.errors.password : ""}</FieldError>
 
                                 <div className={classes.imageAndField}>
                                     <img className={classes.fieldsLogo} src={passwordLogo} align="left" alt=""></img>
-                                    <TextInput name="password"  onBlur={formik.handleBlur} value={formik.values.password} onChange={formik.handleChange} type="password" placeholder="Password"/>
+                                    <TextInput name="password"  onBlur={formik.handleBlur} value={formik.values.password} onChange={formik.handleChange} type="password" placeholder="Password" style={{color: "black"}}/>
                                 </div>
                                 <FieldError>{formik.touched.cpassword && formik.errors.cpassword ? formik.errors.cpassword : ""}</FieldError>
 
                                 <div className={classes.imageAndField} style={{marginBottom: 25}}>
                                     <img className={classes.fieldsLogo} src={passwordLogo} align="left" alt=""></img>
-                                    <TextInput name="cpassword" onBlur={formik.handleBlur} value={formik.values.cpassword} onChange={formik.handleChange} type="password" placeholder="Confirm Password"/>
+                                    <TextInput name="cpassword" onBlur={formik.handleBlur} value={formik.values.cpassword} onChange={formik.handleChange} type="password" placeholder="Confirm Password" style={{color: "black"}}/>
                                 </div>
                             </Form>
                         )}

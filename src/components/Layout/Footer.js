@@ -1,9 +1,10 @@
 import classes from './Footer.module.css';
 import logo from '../../assets/logo.png';
+import {Fragment} from 'react';
 
 const Footer = () =>{
-    return(
-        <div className={classes.footer}>
+    return <Fragment>
+        <footer className={classes.footer}>
             <div className={classes['footer-content']}>
                 <img className={classes.logo} src={logo} alt="" />
                 <div className={classes['footer-container']}>
@@ -17,8 +18,8 @@ const Footer = () =>{
                 </div>
             </div>
             <p className={classes.copyright}>Cinemadness © 2022. All Rights Reserved</p>
-        </div>
-    );
+        </footer>
+        </Fragment>
 }
 
 export default Footer;

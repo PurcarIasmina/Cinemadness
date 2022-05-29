@@ -22,6 +22,8 @@
     width: 45%;
     display: flex;
     justify-content: space-between;
+    margin-top: 15px;
+    margin-bottom: 18px;
 }
 
 .contact-us{

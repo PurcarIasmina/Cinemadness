@@ -84,14 +84,14 @@ function Login()
                            <FieldError>{formik.touched.email && formik.errors.email  ? formik.errors.email :""}</FieldError>
                             <div className={classes.imageAndField}>
                                 <img className={classes.fieldsLogo}  src={emailLogo} align="left" alt=""></img>
-                                <TextInput  value={formik.values.email} onBlur={formik.handleBlur} name="email" required onChange={formik.handleChange} type="text" placeholder="Email"/>
+                                <TextInput  value={formik.values.email} onBlur={formik.handleBlur} name="email" required onChange={formik.handleChange} type="text" placeholder="Email" style={{color: "black"}}/>
                                 
                             </div>
                             <FieldError>{formik.touched.password && formik.errors.password ? formik.errors.password : ""}</FieldError>
 
                             <div className={classes.imageAndField} style={{marginBottom: 25}}>
                                 <img className={classes.fieldsLogo} src={passwordLogo} align="left" alt=""></img>
-                                <TextInput name="password" onBlur={formik.handleBlur} value={formik.values.password} required onChange={formik.handleChange} type="password" placeholder="Password"/>
+                                <TextInput name="password" onBlur={formik.handleBlur} value={formik.values.password} required onChange={formik.handleChange} type="password" placeholder="Password" style={{color: "black"}}/>
                                 
                             </div>
                         </Form>

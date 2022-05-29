@@ -9,7 +9,6 @@ import AddNewMovie from './components/Movies/AddNewMovie';
 import Register from './components/Layout/Register';
 import Login from './components/Layout/Login';
 import LoggedUser from './components/Layout/LoggedUser';
-import Header from './components/Layout/Header';
 
 function App() {
   return (
@@ -22,7 +21,7 @@ function App() {
         <Route path="/loggeduser" element={<LoggedUser />}>
           
         </Route>
-        <Route path="/" element={<Header/>}>
+        <Route path="/" element={<UnloggedUser/>}>
           
         </Route>
         <Route path="/admin" element={<Admin />}>
