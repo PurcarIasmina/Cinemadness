@@ -1,0 +1,60 @@
+.footer{
+    position: relative;
+    width: 100%;
+    padding: 40px 10vw;
+    padding-top: 0;
+    background: #383838;
+    bottom: 0;
+}
+
+.footer-content{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-content .logo{
+    height: 100px;
+}
+
+.footer-container{
+    width: 45%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-us{
+    width: 200px;
+    display: grid;
+    grid-gap: 10px;
+    list-style: none;
+    text-decoration: none;
+    color: rgba(187, 173, 173, 0.75);
+}
+
+.contact-us-title{
+    color: #FFF;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-us .contact-us-number{
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.contact-us .contact-us-email{
+    font-size: 13px;
+}
+.copyright{
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    color: #FFF;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0;
+}
