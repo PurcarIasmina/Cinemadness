@@ -1,35 +1,47 @@
-import { Route, Redirect } from 'react-router-dom';
-import { Switch } from 'react-router-dom';
+ import { Route, Navigate } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 
 import Admin from './components/Users/Admin';
 import UnloggedUser from './components/Users/UnloggedUser';
 import MovieDetails from './components/Movies/MovieDetails';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import AddNewMovie from './components/Movies/AddNewMovie';
-
+import Register from './components/Layout/Register';
+import Login from './components/Layout/Login';
+import LoggedUser from './components/Layout/LoggedUser';
+import Header from './components/Layout/Header';
 
 function App() {
   return (
-      <Switch>
-        <Route path="/" exact>
-          <Redirect to="/unlogged-user"/>
+      <Routes>
+        <Route path="/register" element={<Register />}>
         </Route>
-        <Route path="/admin" exact>
-          <Admin />
+        <Route path="/login" element={<Login />}>
+    
         </Route>
-        <Route path="/admin/add-new-movie" exact>
-          <AddNewMovie />
+        <Route path="/loggeduser" element={<LoggedUser />}>
+          
         </Route>
-        <Route path="/unlogged-user" exact>
-          <UnloggedUser />
+        <Route path="/" element={<Header/>}>
+          
         </Route>
-        <Route path='/movie-details/:movieId' exact>
-          <MovieDetails />
+        <Route path="/admin" element={<Admin />}>
+          
         </Route>
-        <Route path='*'>
-          <NotFoundPage />
+        <Route path="/admin/add-new-movie" element={<AddNewMovie />}>
+     
         </Route>
-      </Switch>
+        <Route path="/unlogged-user" element={<UnloggedUser />}>
+         
+        </Route>
+        <Route path='/movie-details/:movieId' element={<MovieDetails/>}>
+        
+        </Route>
+        <Route path='*' element={<NotFoundPage />}>
+         
+        </Route>
+        
+      </Routes>
   );
 }
 
