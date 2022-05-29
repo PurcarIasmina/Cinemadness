@@ -1,12 +1,6 @@
 import {Fragment} from 'react';
-<<<<<<< HEAD
-import { Link } from 'react-router-dom';
-
-
-=======
 import { Link, Route } from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom';
->>>>>>> main
 
 import backgroundImage from '../../assets/backgroundImage.jpg';
 import logo from '../../assets/logo.png';
