@@ -1,5 +1,5 @@
- import { Route, Redirect } from 'react-router-dom';
-import { Switch } from 'react-router-dom';
+ import { Route, Navigate } from 'react-router-dom';
+import { Routes } from 'react-router-dom';
 
 import Admin from './components/Users/Admin';
 import UnloggedUser from './components/Users/UnloggedUser';
@@ -9,39 +9,39 @@ import AddNewMovie from './components/Movies/AddNewMovie';
 import Register from './components/Layout/Register';
 import Login from './components/Layout/Login';
 import LoggedUser from './components/Layout/LoggedUser';
+import Header from './components/Layout/Header';
 
 function App() {
   return (
-      <Switch>
-        <Route path="/register" exact>
-          <Register />
+      <Routes>
+        <Route path="/register" element={<Register />}>
         </Route>
-        <Route path="/login" exact>
-          <Login />
+        <Route path="/login" element={<Login />}>
+    
         </Route>
-        <Route path="/loggeduser" exact>
-          <LoggedUser />
+        <Route path="/loggeduser" element={<LoggedUser />}>
+          
         </Route>
-        <Route path="/" exact>
-          <Redirect to="/unlogged-user"/>
+        <Route path="/" element={<Header/>}>
+          
         </Route>
-        <Route path="/admin" exact>
-          <Admin />
+        <Route path="/admin" element={<Admin />}>
+          
         </Route>
-        <Route path="/admin/add-new-movie" exact>
-          <AddNewMovie />
+        <Route path="/admin/add-new-movie" element={<AddNewMovie />}>
+     
         </Route>
-        <Route path="/unlogged-user" exact>
-          <UnloggedUser />
+        <Route path="/unlogged-user" element={<UnloggedUser />}>
+         
         </Route>
-        <Route path='/movie-details/:movieId' exact>
-          <MovieDetails />
+        <Route path='/movie-details/:movieId' element={<MovieDetails/>}>
+        
         </Route>
-        <Route path='*'>
-          <NotFoundPage />
+        <Route path='*' element={<NotFoundPage />}>
+         
         </Route>
         
-      </Switch>
+      </Routes>
   );
 }
 
