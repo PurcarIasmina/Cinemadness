@@ -95,13 +95,15 @@ margin:20px;
 }
 `;
 export const StyledButtonWLink=styled.button`
-padding: 10px;
+padding: 5px;
 width: 150px;
+height:40px;
 background-color:white;
 opacitiy:0.5;
 border: 3px solid ${colors.primary};
 border-radius: 25px;
 color: green;
+font-size:15px;
 font-style:bold;
 text-decoration:none;
 text-align:center;
@@ -120,5 +122,12 @@ export const FieldError = styled.span`
   min-height: 18px;
   margin:1px;
   font-weight:900;
+  text-align:center;
+`;
+export const FormError = styled.span`
+  color: #b32e2e;
+  font-size: 20px;
+  min-height: 20px;
+  font-weight: 900;
   text-align:center;
 `;

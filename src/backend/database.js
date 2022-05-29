@@ -34,27 +34,26 @@ const cpassword=req.body.cpassword;
 if(lname!="" && fname)
 if(password==cpassword){
 try{
-    bcrypt.genSalt(10, function(err, salt) {
-        bcrypt.hash(password, salt, function(err, hash) {
-            console.log(hash);
-            db.query("INSERT INTO users (fname,lname,email,password) VALUES (?,?,?,?)",[fname,lname,email,hash],(err,result) =>
-            {
-                if(err)
+    
+            db.query("INSERT INTO users (fname,lname,email,password) VALUES (?,?,?,?)",[fname,lname,email,password],(err,result) =>
+            {   console.log(err,result);
+                if(err!==null)
                 {
-                    console.log(err);
-                    
+                    if(err.errno===1062)
+                        res.status(300).send("Email already used");
+                    else
+                        res.status(301).send("Other error");
                 }
                 else
                 {
-                    res.status(200).send(req.body);
+                    res.status(200).send(req.body.email);
                 }
             });
-        });
-    });
+}
+    
 
-    res.send("User was created");
  
-}catch(err)
+catch(err)
 {
     console.log(err);
 }
@@ -64,48 +63,25 @@ app.post('/verifyaccount',(req,res)=>{
 const email=req.body.email;
 const password=req.body.password;
 console.log(req.body);
-db.query("SELECT * FROM users WHERE email=?",[email],(err,result) =>
-            {
-                if(err)
-                {
-                    res.status(500).send(err);
-                }
-                var ok=0;
-                var list=[];
-                list.push(result);
-                if(result.length>0)
-                 {
-                      console.log(email);
-                    
-                    for(var i=0;i<result.length;i++){
-                        console.log(i);
-                        console.log(result[i].password);
-                            if(bcrypt.compare(password,result[i].password)==true){
-                        console.log(password);
-                        ok=1;
-                        res.status(200).send(result[i]);
-                        
+db.query("SELECT * FROM users WHERE email=?",[email],function(err,result)
+            
+{          
+           if(result!==null && result!==undefined)
+           {   
+               if(result.length>0)
+                res.status(200).send(email);
+               else
+                res.status(300).send("Invalid credentials");
+           }
+           else
+                res.status(301).send("Connection lost");
+}
+);
+        });
                     
                     
-                    }
-                    console.log(ok);
                     
-                }
-                    if(ok==0)
-                    {    console.log("Nu este");
-                         res.status(300).send("Incorrect password");
-                         
-                    }
-                 }
-                else
-                res.status(301).send("This user doesn't exist");
-
-                
-            });
-       
-
-
-});
+                           
 
 app.listen(3007,()=>{
     console.log("yey");

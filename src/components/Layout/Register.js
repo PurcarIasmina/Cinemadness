@@ -1,6 +1,6 @@
 import React from "react";
 import classes from './Register.module.css';
-import {StyledContainer,StyledTextInput,Avatar,StyledFormArea,StyledTitle,StyledSubTitle,StyledButton, FieldError, StyledButtonWLink} from './Style';
+import {StyledContainer,StyledTextInput,Avatar,StyledFormArea,StyledTitle,StyledSubTitle,StyledButton, FieldError, StyledButtonWLink,FormError} from './Style';
 import logo from '../../assets/logo.png';
 import emailLogo from '../../assets/email.png';
 import passwordLogo from '../../assets/password.png';
@@ -19,10 +19,12 @@ function Register()
     
     //     console.log(fname+lname+email+password);
     // };
+    const [success, setSuccess] = useState(null);
+    const [error,setError]=useState(null);
     const navigator=useNavigate();
     const addUser=()=>{
         //console.log(fname);
-    axios.post("http://localhost:3007/create",{fname:formik.values.fname,lname:formik.values.lname,email:formik.values.email,password:formik.values.password, cpassword:formik.values.cpassword},{
+    axios.post("http://localhost:3007/create",{fname:formik.values.fname,lname:formik.values.lname,email:formik.values.email,password:btoa(formik.values.password), cpassword:btoa(formik.values.cpassword)},{
 
         headers: {
 
@@ -30,7 +32,16 @@ function Register()
 
         }
 
-    }).then(({data})=>{navigator("/login")});
+    }).then(({result})=>{
+        console.log(result);
+        navigator("/login")}).catch(err=>{
+            console.log()
+        if(err.response.status===300)
+        {
+            setError("Email already used!");
+            setSuccess(null);
+        }
+    });
     };
     const PASSWORD_REGEX = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/;
     const validationSchema = yup.object({
@@ -85,6 +96,7 @@ function Register()
                         <img className={classes.logo} src={logo} align="left" alt=""></img>
                         <StyledTitle size={30} color={"red"}>Register in </StyledTitle>
                     </div>
+                    {!success && <FormError>{error ? error : ""}</FormError>}
                     <Formik>
                         {() =>
                         (
