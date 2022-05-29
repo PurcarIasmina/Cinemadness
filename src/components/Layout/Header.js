@@ -1,8 +1,11 @@
 import {Fragment} from 'react';
+import { Link, Route } from 'react-router-dom';
+import {BrowserRouter} from 'react-router-dom';
 
 import backgroundImage from '../../assets/backgroundImage.jpg';
 import logo from '../../assets/logo.png';
 import classes from './Header.module.css';
+
 const Header = props => {
     return <Fragment>
         <header className={classes.header}>
@@ -17,8 +20,8 @@ const Header = props => {
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </select>
-            <button className={classes['login-signup-buttons']}>Log In</button>
-            <button className={classes['login-signup-buttons']}>Sign Up</button>
+            <button className={classes['login-signup-buttons']}><a href="/login">Log In</a></button>
+            <button className={classes['login-signup-buttons']}><a href="/register">Sign Up</a></button>
         </header>
         <div className={classes['main-image']}>
            <img src={backgroundImage} alt=""></img> 
