@@ -28,7 +28,9 @@ app.post("/createMovie", (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        res.send("Values Inserted");
+      
+        console.log(result.insertId);
+        res.status(200).send((result.insertId).toString());
       }
     }
   );
@@ -42,6 +44,28 @@ app.get("/movies", (req, res) => {
             res.send(result);
           }
     })
+})
+app.post("/selectedMovie", (req, res) => {
+  console.log(req.body);
+  console.log(req.body.id);
+  const id=req.body.id;
+  console.log(id);
+  db.query("SELECT * FROM movies WHERE id=?",[id],(err, result) => {
+      if (err) {
+        res.status(400).send(err);
+          console.log(err);
+        } else {
+          if(result.length>0){
+          console.log(result[0]);
+          res.status(200).send(result[0]);}
+          
+        
+        else
+        {
+          res.status(401).send("Movie not found!");
+        }
+      }
+  })
 })
 
 app.listen(3001, () => {

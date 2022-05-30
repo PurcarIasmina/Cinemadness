@@ -2,7 +2,7 @@ import classes from "./NewMovieForm.module.css"
 import camera from '../../assets/camera.png';
 import { useState } from "react";
 import Axios from "axios";
-
+import {Navigate, useNavigate,Link} from 'react-router-dom';
 const NewMovieForm = () => {
 
     const [name, setName] = useState("");
@@ -11,7 +11,7 @@ const NewMovieForm = () => {
     const [price, setPrice] = useState(0);
     const [length, setLength] = useState(0);
     const [day, setDay] = useState("");
-
+    const navigate=useNavigate();
     const addMovie = () => {
         Axios.post("http://localhost:3001/createMovie", {
           name: name,
@@ -20,8 +20,11 @@ const NewMovieForm = () => {
           length: length,
           image: image,
           day: day,
-        }).then(() => {
-            console.log("success");
+        }).then((result) => {
+            if(result.status===200)
+            {  console.log(result.data);
+                navigate("/movie-details/" + result.data);
+            }
         });
     };
 
