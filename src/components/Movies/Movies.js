@@ -17,17 +17,21 @@ const Movies = () =>{
 
     return <Fragment >
                 <div className={classes['movie-container']}>
-                    {movieList.map( (val, key) => 
-                    <Link to={"/movie-details/" + val.id}>
-                        <MovieItem 
-                        key={val.id} 
-                        image={val.image} 
-                        name={val.name} 
-                        />
-                    </Link>
-                    )}
+                    {movieList.length === 0 ?  (
+                        <p>No movies found!!!</p>
+                    ) : (
+                        movieList.map( (val, key) => 
+                            <Link to={"/movie-details/" + val.id}>
+                                <MovieItem 
+                                key={val.id} 
+                                image={val.image} 
+                                name={val.name} 
+                                />
+                            </Link>
+                        ))
+                    }
                 </div>
-            </Fragment>
+            </Fragment>  
 };
 
 export default Movies;

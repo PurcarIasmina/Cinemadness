@@ -33,11 +33,8 @@ textarea{
 
 .movie-info{
     width: 100%;
-    height: 500px;
+    height: 200px;
     display: grid;
-    grid-template-columns: .75fr 1.25fr;
-    grid-template-rows: repeat(2, 1fr);
-    grid-gap: 20px;
     margin-bottom: 20px;
 }
 

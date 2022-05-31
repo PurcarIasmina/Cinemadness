@@ -4,10 +4,9 @@ import { useState } from "react";
 import Axios from "axios";
 
 const NewMovieForm = () => {
-
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
-    const [image, setImage] = useState("");
+    const [imageBase64, setImageBase64] = useState("");
     const [price, setPrice] = useState(0);
     const [length, setLength] = useState(0);
     const [day, setDay] = useState("");
@@ -18,7 +17,7 @@ const NewMovieForm = () => {
           description: description,
           price: price,
           length: length,
-          image: image,
+          image: imageBase64.default,
           day: day,
         }).then(() => {
             console.log("success");
@@ -31,10 +30,9 @@ const NewMovieForm = () => {
             <textarea onChange={(event) => {setDescription(event.target.value)}}  placeholder="Description"></textarea>
     
             <div className={classes["movie-info"]}>
-                <div className={classes["movie-image"]}><p className="text">Movie image</p></div>
                 <div className={classes["upload-image-sec"]}>
                     <p className={classes["text"]}><img src={camera} alt=""/>Upload image</p>
-                    <input type="file" onChange={(event) => {setImage(event.target.value)}}  className={classes["upload-image"]}/>
+                    <input type="file" onChange={(event) => {setImageBase64(require('../../assets/' + event.target.files[0].name))}}  className={classes["upload-image"]}/>
                 </div>
             </div>
 

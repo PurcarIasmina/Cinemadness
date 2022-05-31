@@ -7,11 +7,15 @@ import logo from '../../assets/logo.png';
 import classes from './Header.module.css';
 
 const Header = props => {
+    const dropdownChangeHandler = (event) => {
+        console.log(event.target.value);
+    };
+
     return <Fragment>
         <header className={classes.header}>
             <Link to="/"><img className={classes.logo} src={logo} alt=""></img></Link>
             <input className={classes['header-search']} type="text" placeholder="Search"/>
-            <select className={classes['days']}>
+            <select className={classes['days']} onChange={dropdownChangeHandler}>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
                 <option value="Wednesday">Wednesday</option>
