@@ -10,6 +10,8 @@ const NewMovieForm = () => {
     const [price, setPrice] = useState(0);
     const [length, setLength] = useState(0);
     const [day, setDay] = useState("");
+    const [genres, setGenres] = useState("");
+    const [trailer, setTrailer] = useState("");
 
     const addMovie = () => {
         Axios.post("http://localhost:3001/createMovie", {
@@ -19,6 +21,8 @@ const NewMovieForm = () => {
           length: length,
           image: imageBase64.default,
           day: day,
+          genres: genres,
+          trailer: trailer,
         }).then(() => {
             console.log("success");
         });
@@ -36,10 +40,10 @@ const NewMovieForm = () => {
                 </div>
             </div>
 
+            <input type="text" onChange={(event) => {setTrailer(event.target.value)}}  placeholder="Movie trailer" />
+            <input type="text" onChange={(event) => {setGenres(event.target.value)}}  placeholder="Movie genres" />
             <input type="number" onChange={(event) => {setPrice(event.target.value)}}  placeholder="Selling price"/>
-
             <input type="number" onChange={(event) => {setLength(event.target.value)}}  placeholder="Movie length"/>
-        
             <input type="text" onChange={(event) => {setDay(event.target.value)}}  placeholder="Movie day" />
 
             <div className={classes["buttons"]}>
