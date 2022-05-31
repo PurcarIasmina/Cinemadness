@@ -6,7 +6,7 @@ import Axios from "axios";
 
 const Movies = () =>{
     const [movieList, setMovieList] = useState([]);
-
+ 
     const getMovies = () => {
         Axios.get("http://localhost:3001/movies").then((response) => {
             setMovieList(response.data);
