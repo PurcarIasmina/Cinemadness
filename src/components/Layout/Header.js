@@ -1,14 +1,14 @@
-import {Fragment} from 'react';
+import {Fragment, useState,useEffect} from 'react';
 import { Link, Route } from 'react-router-dom';
 import {BrowserRouter} from 'react-router-dom';
-
+import {useNavigate} from 'react-router-dom';
 // import MovieItem from '../Movies/MovieItem';
 import backgroundImage from '../../assets/backgroundImage.jpg';
 import logo from '../../assets/logo.png';
 import classes from './Header.module.css';
 // import '../Movies/Movies.module.css';
 // // import { useState,useEffect } from 'react';
-// import axios from 'axios';
+ import axios from 'axios';
 const Header = props => {
 //     const [searchMovie, setSearchMovie] = useState("");
 //     const[movieList,setMovieList]=useState([]);
@@ -49,6 +49,33 @@ const Header = props => {
 //                 />
 //             </Link>})
 //      }
+const navigator=useNavigate();
+const [loginStatus, setLoginStatus] = useState("");
+const [isLogged,setIsLogged]=useState(false);
+const [isAdmin,setIsAdmin]=useState(false);
+axios.defaults.withCredentials = true;
+useEffect( ()=>
+    {  getLoggedUser();
+       
+        
+    },[]);
+
+const getLoggedUser=async ()=>{await axios.get("http://localhost:3007/login").then((response) => {
+      if (response.data.loggedIn == true) {
+          console.log(response.data.loggedIn);
+          setIsLogged(true);
+          if(response.data.user[0].admin==1)
+          setIsAdmin(true);
+        setLoginStatus(response.data.user[0].lname);
+      }
+    });};
+const Logout=()=>{axios.post("http://localhost:3007/logout").then((response) => {
+    console.log("aici");
+    if (response ){
+          console.log("aici");
+       navigator("/login");
+      }
+    });};
     return <Fragment>
         <header className={classes.header}>
             <Link to="/"><img className={classes.logo} src={logo} alt=""></img></Link>
@@ -68,8 +95,12 @@ const Header = props => {
                 <option value="Saturday">Saturday</option>
                 <option value="Sunday">Sunday</option>
             </select>
-            <button className={classes['login-signup-buttons']}><a href="/login">Log In</a></button>
-            <button className={classes['login-signup-buttons']}><a href="/register">Sign Up</a></button>
+            {!{isLogged}}
+        { !isLogged && <button className={classes['login-signup-buttons']}><a href="/login">Log In</a></button>}
+        {  !isLogged &&  <button className={classes['login-signup-buttons']}><a href="/register">Sign Up</a></button>}
+        { isLogged && !isAdmin && <h1>{loginStatus}</h1>}
+        { isLogged && isAdmin && <button className={classes['login-signup-buttons']}><a href="/admin/add-new-movie">Add movie</a></button>}
+        {  isLogged &&  <button onClick={()=>Logout()}className={classes['login-signup-buttons']}>Logout</button>}
         </header>
         <div className={classes['main-image']}>
            <img src={backgroundImage} alt=""></img> 

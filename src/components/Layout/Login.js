@@ -12,11 +12,12 @@ import {TextInput} from "./FormLib";
 
 function Login()
 {
-   
+    axios.defaults.withCredentials = true;
     const navigator=useNavigate();
      var message="";
      const [success, setSuccess] = useState(null);
     const [error,setError]=useState(null);
+   
     const logUser=()=>{
         //console.log(fname);
 
@@ -32,7 +33,7 @@ function Login()
 
         {   if(result.status===200)
            { 
-            navigator("/loggeduser");}
+            navigator("/");}
         }).catch((err)=>{
             console.log()
             if(err.response.status===300)

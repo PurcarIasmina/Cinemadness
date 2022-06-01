@@ -12,7 +12,14 @@ const db = mysql.createConnection({
   password: "password",
   database: "cinemadness",
 });
-
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 app.post("/createMovie", (req, res) => {
   const name = req.body.name;
   const description = req.body.description;

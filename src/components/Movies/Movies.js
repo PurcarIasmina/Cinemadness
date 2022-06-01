@@ -1,19 +1,23 @@
 import classes from './Movies.module.css';
 import MovieItem from './MovieItem';
 import { Link } from 'react-router-dom';
-import { useState } from "react";
-import Axios from "axios";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Movies = () =>{
     const [movieList, setMovieList] = useState([]);
- 
-    const getMovies = () => {
-        Axios.get("http://localhost:3001/movies").then((response) => {
+    useEffect( ()=>
+    {  getMovies();
+       
+        
+    },[]);
+    const getMovies = async () => {
+       await axios.get("http://localhost:3001/movies").then((response) => {
             setMovieList(response.data);
         });
     };
 
-    getMovies();
+    
 
     return (
         <div className={classes['movie-container']}>
