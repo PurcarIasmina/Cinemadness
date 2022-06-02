@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const { FaCreativeCommonsPd } = require("react-icons/fa");
 
 app.use(cors());
 app.use(express.json());
@@ -147,6 +148,67 @@ app.post("/getMovieRating", (req, res) => {
 })
   
 
+})
+app.post("/getMoviesRating", (req, res) => {
+  
+  
+  db.query("SELECT * FROM movies",(err, result) => {
+  
+  
+      if (err) {
+        res.status(400).send(err);
+          console.log(err);
+        } else {
+          var list=[];
+          for(var i=0;i<result.length;i++){
+            console.log(result.length);
+            console.log(result[i].id);
+            var object=[result[i].id,result[i].name,result[i].image];
+            console.log(object);
+          db.query("SELECT * FROM rating WHERE id_movie=?",[result[i].id],(errr, resultt) => {
+         
+            if(errr)
+            { console.log("aici");
+              console.log(err);
+            }
+            else
+            { object.push(resultt[0].average);
+              //console.log(object);
+              list.push(object);
+              object=[];
+            }
+            console.log(list);
+          })
+        
+          }
+          console.log(list);
+          res.status(201).send(list);
+        }
+        
+        
+})
+
+  
+
+})
+app.post("/addFave", (req, res) => {
+  console.log(req.body);
+  
+  const id_user=req.body.id_user;
+  const id_movie=req.body.id_movie;
+  db.query("INSERT INTO favourites (id_movie,id_user)  VALUES (?,?)",[id_movie,id_user],(err, result) => {
+  
+  
+      if (err) {
+        res.status(400).send(err);
+          console.log(err);
+        } else {
+          
+          console.log(result);
+          res.status(201).send(result);}
+        
+        
+})
 })
 
 app.listen(3001, () => {

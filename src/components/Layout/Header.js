@@ -98,7 +98,7 @@ const Logout=()=>{axios.post("http://localhost:3007/logout").then((response) => 
             {!{isLogged}}
         { !isLogged && <button className={classes['login-signup-buttons']}><a href="/login">Log In</a></button>}
         {  !isLogged &&  <button className={classes['login-signup-buttons']}><a href="/register">Sign Up</a></button>}
-        { isLogged && !isAdmin && <h1>{loginStatus}</h1>}
+        { isLogged && !isAdmin && <h1><a href="/favourites">{loginStatus}</a></h1>}
         { isLogged && isAdmin && <button className={classes['login-signup-buttons']}><a href="/admin/add-new-movie">Add movie</a></button>}
         {  isLogged &&  <button onClick={()=>Logout()}className={classes['login-signup-buttons']}>Logout</button>}
         </header>

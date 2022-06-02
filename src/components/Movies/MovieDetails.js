@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState,useEffect } from "react";
-import {StyledContainer} from '../Layout/Style'
+import {StyledButtonWLink, StyledButtonWLinkR, StyledContainer} from '../Layout/Style'
 import './MovieDetails.css'
 import ReactPlayer from "react-player";
 import { FaStar } from "react-icons/fa";
@@ -43,9 +43,12 @@ const MovieDetails = () => {
   const [hoverValue, setHoverValue] = useState(undefined);
   const stars = Array(5).fill(0)
     const [movieDetails, setMovieDetails] = useState([]);
+    const [isClick, setClick] = useState(false);
+    const [loginStatus, setLoginStatus] = useState("");
+    axios.defaults.withCredentials = true;
     useEffect( ()=>
     {  MMovieDetails();
-       
+       getLoggedUser();
         
     },[]);
     
@@ -89,6 +92,35 @@ const MovieDetails = () => {
            
        });
     
+     }
+     const getLoggedUser=async ()=>{await axios.get("http://localhost:3007/login").then((response) => {
+      if (response.data.loggedIn == true) {
+          console.log(response.data.loggedIn);
+          
+         
+        setLoginStatus(response.data.user[0].id);
+      }
+    });};
+     const Addfave= ()=>{
+         axios.post("http://localhost:3001/addFave",{id_user:loginStatus,id_movie:params.movieId,},{
+       
+            headers: {
+    
+                'Content-Type' : 'application/json'
+    
+            }
+    
+        }).then((result)=>{
+            
+            if(result.status===201){
+            console.log(result.data);
+            
+            //console.log(movieDetails);
+         }}).catch(err=>{
+                console.log(err.response);
+            
+        });
+     
      }
      const handleClick = value => {
         setCurrentValue(value)
@@ -145,7 +177,7 @@ const MovieDetails = () => {
                        <p>{val.description}</p>
            
 
-                        <button className="cart">Add to cart</button>
+                     
                         <div style={styles.stars}>
                         {stars.map((_, index) => {
                         return (
@@ -165,8 +197,12 @@ const MovieDetails = () => {
           )
          
         })}
-         <button onClick={()=>submitRating()}>Rate</button>
+         <StyledButtonWLinkR onClick={()=>submitRating()}>Rate</StyledButtonWLinkR>
+
       </div>
+      <StyledButtonWLink>Buy ticket</StyledButtonWLink>
+      <StyledButtonWLink onClick={()=>Addfave()}>Add to favourites</StyledButtonWLink>
+
                     </div>
                 </div>)
                 ;}
