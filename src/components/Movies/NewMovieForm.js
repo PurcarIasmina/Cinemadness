@@ -2,7 +2,7 @@ import classes from "./NewMovieForm.module.css"
 import camera from '../../assets/camera.png';
 import { useState } from "react";
 import Axios from "axios";
-
+import {Navigate, useNavigate,Link} from 'react-router-dom';
 const NewMovieForm = () => {
     const [name, setName] = useState("");
     const [description, setDescription] = useState("");
@@ -10,6 +10,7 @@ const NewMovieForm = () => {
     const [price, setPrice] = useState(0);
     const [length, setLength] = useState(0);
     const [day, setDay] = useState("");
+    const navigate=useNavigate();
     const [genres, setGenres] = useState("");
     const [trailer, setTrailer] = useState("");
 
@@ -21,10 +22,11 @@ const NewMovieForm = () => {
           length: length,
           image: imageBase64.default,
           day: day,
-          genres: genres,
-          trailer: trailer,
-        }).then(() => {
-            console.log("success");
+        }).then((result) => {
+            if(result.status===200)
+            {  console.log(result.data);
+                navigate("/movie-details/" + result.data);
+            }
         });
     };
 

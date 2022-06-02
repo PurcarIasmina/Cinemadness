@@ -131,3 +131,26 @@ export const FormError = styled.span`
   font-weight: 900;
   text-align:center;
 `;
+
+export const StyledButtonWLinkR=styled.button`
+padding: 2px;
+width: 40px;
+height:20px;
+background-color:transparent;
+opacitiy:0.5;
+border: 0.5px solid ${colors.primary};
+border-radius: 25px;
+color: green;
+font-size:10px;
+font-style:bold;
+text-decoration:none;
+text-align:center;
+transition: ease-in-out 0.3s;
+margin:3px;
+&:hover
+{
+    background-color: ${colors.primary};
+    color: ${colors.theme};
+    cursor:pointer;
+}
+`;
