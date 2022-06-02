@@ -28,10 +28,12 @@ app.post("/createMovie", (req, res) => {
   const length = req.body.length;
   const image = req.body.image;
   const day = req.body.day;
+  const genres = req.body.genres;
+  const trailer = req.body.trailer;
 
   db.query(
-    "INSERT INTO movies (name, description, price, length, image, day) VALUES (?,?,?,?,?,?)",
-    [name, description, price, length, image, day],
+    "INSERT INTO movies (name, description, price, length, image, day, genres, trailer) VALUES (?,?,?,?,?,?,?,?)",
+    [name, description, price, length, image, day, genres, trailer],
     (err, result) => {
       if (err) {
         console.log(err);
